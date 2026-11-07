@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ytgrab"
+version = "1.14.1"
+description = "A modern CLI YouTube downloader"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{ name = "fakrudin" }]
+dependencies = [
+    "yt-dlp[default]>=2025.1.1",
+]
+
+[project.optional-dependencies]
+tui = ["textual>=8.0"]
+dev = ["pytest>=7", "textual>=8.0"]
+
+[project.scripts]
+ytstream = "ytgrab.ytstream:main"
+ytgrab = "ytgrab.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ytgrab*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
